@@ -92,6 +92,3 @@ blog-platform/
 │   ├── schema.sql                # Complete MySQL relational database schema
 │   └── seed.sql                  # Initial mock data, categories, and sample posts
 └── README.md
-
-
-d, Author or Admin)AdminGET /api/admin/stats — Platform-wide statistics (Protected, Admin only)GET /api/admin/categories — List all categories
