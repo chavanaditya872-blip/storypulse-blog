@@ -94,24 +94,4 @@ blog-platform/
 └── README.md
 
 
-🗄️ Database Schema Designusers: id (PK), name, email (UNIQUE), password_hash, role, bio, created_atcategories: id (PK), name (UNIQUE), slug (UNIQUE), descriptionposts: id (PK), user_id (FK -> users.id), category_id (FK -> categories.id), title, slug (UNIQUE), description, content, image_url, status, reading_time, created_atcomments: id (PK), post_id (FK -> posts.id), user_id (FK -> users.id), comment_text, created_at🚀 Local Installation & SetupPrerequisitesPython 3.10+Node.js v18+ and npmMySQL Server 8.0+Step 1: Database SetupIn your MySQL shell or Workbench:SQLCREATE DATABASE blog_platform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE blog_platform;
-Import schema and seed files:SQLSOURCE /path/to/blog-platform/database/schema.sql;
-SOURCE /path/to/blog-platform/database/seed.sql;
-Step 2: Backend Setup (Flask API)Navigate to the backend directory:Bashcd backend
-Create and activate a Python virtual environment:Bashpython -m venv venv
-# Windows:
-.\venv\Scripts\Activate.ps1
-# macOS/Linux:
-source venv/bin/activate
-Install dependencies:Bashpip install -r requirements.txt
-Configure environment variables in .env:Code snippetFLASK_APP=app.py
-FLASK_ENV=development
-SECRET_KEY=platform_jwt_production_grade_secret_3489
-JWT_SECRET_KEY=platform_jwt_production_grade_secret_3489
-DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/blog_platform
-Run the server:Bashpython app.py
-API runs at: http://127.0.0.1:5000Step 3: Frontend Setup (React & Vite)Open a new terminal and navigate to the frontend folder:Bashcd frontend
-Install npm dependencies:Bashnpm install
-Start the dev server:Bashnpm run dev
-Client runs at: http://localhost:5173🔑 Default Test AccountsRoleEmailPasswordPermissionsAdminadmin@example.comAdmin@123Full administrative access, moderate content, /admin metricsUseraditya@example.comUser@123Author posts, manage personal dashboard, post comments📡 REST API ReferenceAuthenticationPOST /api/auth/register — Register a new accountPOST /api/auth/login — Log in and receive JWT tokenGET  /api/auth/profile — Fetch current user profile (Protected)PostsGET    /api/posts — Get all published posts (supports ?search= and ?category=)GET    /api/posts/<id> — Get single article detailsPOST   /api/posts — Create a new article (Protected)GET    /api/posts/user/my-posts — Fetch articles authored by logged-in user (Protected)DELETE /api/posts/<id> — Delete article (Protected, Author or Admin)CommentsGET    /api/posts/<id>/comments — Get comments for a postPOST   /api/posts/<id>/comments — Add a comment (Protected)DELETE /api/comments/<id> — Delete a comment (Protected, Author or Admin)AdminGET /api/admin/stats — Platform-wide statistics (Protected, Admin only)GET /api/admin/categories — List all categories
+d, Author or Admin)AdminGET /api/admin/stats — Platform-wide statistics (Protected, Admin only)GET /api/admin/categories — List all categories
